@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\RegisterRequest;
 
 class RegisteredUserController extends Controller
 {
-    public function create()
+    public function create(RegisterRequest $request)
     {
-        return view('creat');
+        $contact = $request->only(['name', 'email', 'password']);
+        return view('login', ['contact' => $contact]);
     }
 
-    public function sotre()
+    public function sotre(RegisterRequest $request)
     {
-        return view('sotre');
-    }
+        $contact = $request->only(['name', 'email', 'password']);
+        Contact::create($contact);
+
+        return view('login');
+}
+
 }

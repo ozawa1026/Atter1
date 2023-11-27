@@ -11,13 +11,14 @@ class AuthenticatedSessionController extends Controller
         return view('index');
     }
 
-    public function sotre()
+    public function store()
     {
-        return view('sotre');
+        return view('login');
     }
 
     public function destroy()
     {
-        return view('destroy');
+        return view('login');
     }
+
 }
