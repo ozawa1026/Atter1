@@ -8,14 +8,14 @@ class RegisteredUserController extends Controller
 {
     public function create(RegisterRequest $request)
     {
-        $contact = $request->only(['name', 'email', 'password']);
-        return view('login', ['contact' => $contact]);
+        $user = $request->only(['name', 'email', 'password']);
+        return view('login', ['user' => $user]);
     }
 
-    public function sotre(RegisterRequest $request)
+    public function store(RegisterRequest $request)
     {
-        $contact = $request->only(['name', 'email', 'password']);
-        Contact::create($contact);
+        $user = $request->only(['name', 'email', 'password']);
+        User::create($user);
 
         return view('login');
 }
