@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterRequest;
+use App\Models\User;
 
 class RegisteredUserController extends Controller
 {
-    public function create(RegisterRequest $request)
+    public function create()
     {
-        $user = $request->only(['name', 'email', 'password']);
-        return view('login', ['user' => $user]);
+        return view('register');
     }
 
     public function store(RegisterRequest $request)
@@ -18,6 +18,5 @@ class RegisteredUserController extends Controller
         User::create($user);
 
         return view('login');
-}
-
+    }
 }
