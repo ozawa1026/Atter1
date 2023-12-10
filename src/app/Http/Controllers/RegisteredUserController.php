@@ -7,16 +7,27 @@ use App\Models\User;
 
 class RegisteredUserController extends Controller
 {
+    /**
+     * Show the registration form.
+     *
+     * @return \Illuminate\View\View
+     */
     public function create()
     {
-        return view('register');
+        return view('auth.register');
     }
 
+    /**
+     * Handle an incoming registration request.
+     *
+     * @param  \App\Http\Requests\RegisterRequest  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(RegisterRequest $request)
     {
         $user = $request->only(['name', 'email', 'password']);
         User::create($user);
 
-        return view('login');
+        return redirect()->route('login')->with('success', 'Registration successful! Please log in.');
     }
 }
