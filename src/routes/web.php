@@ -23,14 +23,6 @@ Route::post('/register', [RegisteredUserController::class, 'store'])
     ->middleware('guest')
     ->name('register.post');
 
-// // ログイン
-// Route::get('/login', [AuthenticatedSessionController::class, 'create']) // createメソッドに修正
-//     ->middleware('guest')
-//     ->name('login');
-
-// Route::post('/login', [AuthenticatedSessionController::class, ''])
-//     ->middleware('guest')
-//     ->name('login.post');
 
 // 打刻
 Route::get('/', [WorksController::class, 'index'])->name('punch');
